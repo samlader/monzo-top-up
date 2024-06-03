@@ -2,7 +2,7 @@
 
 A simple web API that listens to webhook events from Monzo and transfers funds from a designated pot when your account balance falls below a specified threshold.
 
-This enables you to take advantage of the higher interest rates available on instant access pots by holding most of your funds in one, without the worry of your account balance falling too low. 💸
+This enables you to take advantage of the higher interest rates available on instant access pots by holding most of your funds in one, without worrying about your account balance falling too low. 💸
 
 > [!IMPORTANT]
 > This is a hobby project and is **not** endorsed by or affiliated with Monzo Bank. While my aim is to keep this secure, assume that I don't know what I'm doing and use it at your own risk.
