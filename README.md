@@ -10,7 +10,7 @@ This enables you to keep most of your funds in an instant access pot and benefit
 ## Requirements
 
 - Node.js
-- Monzo API credentials
+- Monzo OAuth2 client credentials
 - Vercel project with KV storage enabled
 
 ## Quick Start
