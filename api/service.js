@@ -2,17 +2,18 @@ import fetch from "node-fetch";
 import { kv } from "@vercel/kv";
 import { POT_ID, MONZO_API_URL, CLIENT_ID, CLIENT_SECRET } from "./config.js";
 
-// TODO: Move client logic into a separate module
+// TODO: Refactor client logic into a separate module
 
 async function getHeaders() {
   return { Authorization: `Bearer ${await getValidAccessToken()}` };
 }
 
 async function getAccountBalance(account_id) {
-  const url = `${MONZO_API_URL}/balance?account_id=${account_id}`;
-
   try {
-    const response = await fetch(url, { headers: await getHeaders() });
+    const response = await fetch(
+      `${MONZO_API_URL}/balance?account_id=${account_id}`,
+      { headers: await getHeaders() }
+    );
 
     if (!response.ok) {
       const errorResponse = await response.text();
@@ -32,11 +33,11 @@ async function getAccountBalance(account_id) {
   }
 }
 
-async function transferFromPot(amount, account_id, unique_id) {
+async function transferFromPot(amount, account_id, idempotent_key) {
   const data = new URLSearchParams({
     destination_account_id: account_id,
     amount: amount.toString(),
-    dedupe_id: `unique_id_${unique_id}`,
+    dedupe_id: `idempotent_key_${idempotent_key}`,
   });
 
   try {
@@ -71,6 +72,7 @@ async function transferFromPot(amount, account_id, unique_id) {
 
 async function refreshAccessToken() {
   const refreshToken = await kv.get("MONZO_REFRESH_TOKEN");
+
   const data = new URLSearchParams({
     grant_type: "refresh_token",
     client_id: CLIENT_ID,
@@ -108,7 +110,6 @@ async function refreshAccessToken() {
     return responseData.access_token;
   } catch (error) {
     console.log(error);
-
     throw new Error("Failed to refresh access token");
   }
 }
@@ -119,8 +120,7 @@ async function getValidAccessToken() {
   if (tokenData && tokenData.expires_at > Date.now()) {
     return tokenData.token;
   } else {
-    console.error("REFRESHING TOKEN");
-
+    console.error("refreshing token");
     return await refreshAccessToken();
   }
 }

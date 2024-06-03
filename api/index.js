@@ -25,11 +25,10 @@ app.post("/monzo", async (req, res) => {
       if (balance < THRESHOLD) {
         await transferFromPot(TOPUP_AMOUNT, data.data.account_id, data.data.id);
 
-        console.log("transferred");
+        console.log(`transferred ${TOPUP_AMOUNT} from pot to current account`);
 
         return res.status(200).json({
           status: "success",
-          message: `Transferred ${TOPUP_AMOUNT} from pot to current account`,
         });
       }
 
