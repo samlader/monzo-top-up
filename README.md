@@ -35,7 +35,7 @@ This enables you to keep most of your funds in an instant access pot and benefit
    <br><br>
    (This application can run for **free** on a Vercel hobby tier account)
 
-3. Manually register webhook events to the `/monzo` endpoint of your deployment using the Monzo API.
+3. Manually [register](https://docs.monzo.com/#webhooks:~:text=in%20an%20account.-,Registering%20a%20webhook,-%24%20http%20%2D%2Dform) webhook events to the `/monzo` endpoint of your deployment using the Monzo API.
 
 ## License
 
