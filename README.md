@@ -5,7 +5,7 @@ A simple web API that listens to webhook events from Monzo and automatically tra
 This enables you to keep most of your funds in an instant access pot and benefit from the higher interest rate, without worrying about your account balance falling too low. 💸
 
 > [!IMPORTANT]
-> This is a hobby project and is **not** endorsed by or affiliated with Monzo Bank. While my aim is to keep this secure, assume that I don't know what I'm doing and use it at your own risk.
+> This is a hobby project and is **not** endorsed by or affiliated with Monzo Bank. While my aim is to keep this secure, assume that I don't know what I'm doing and use at your own risk.
 
 ## Requirements
 
