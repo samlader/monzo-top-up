@@ -1,6 +1,6 @@
 # Monzo Top Up
 
-A simple web API that listens to webhook events from Monzo and transfers funds from a designated pot when your account balance falls below a specified threshold.
+A simple web API that listens to webhook events from Monzo and automatically transfers funds from a designated pot when your account balance falls below a specified threshold.
 
 This enables you to keep most of your funds in an instant access pot and benefit from the higher interest rate, without worrying about your account balance falling too low. 💸
 
